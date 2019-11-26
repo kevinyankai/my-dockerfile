@@ -1,0 +1,3 @@
+FROM golang:1.11-alpine
+MAINTAINER  wj
+RUN apk add --no-cache make gcc musl-dev linux-headers
