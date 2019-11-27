@@ -3,13 +3,13 @@ LABEL maintainer="idea_wj@163.com"
 LABEL description="用于编译substrate的镜像环境."
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV PATH=/root/.cargo/bin:$PATH
 
 RUN apt-get update && \
 	apt-get dist-upgrade -y -o Dpkg::Options::="--force-confold" && \
 	apt-get install -y cmake pkg-config libssl-dev git clang
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y && \
-	export PATH="$PATH:$HOME/.cargo/bin" && \
 	rustup toolchain install nightly && \
 	rustup target add wasm32-unknown-unknown --toolchain nightly && \
 	rustup default nightly && \
