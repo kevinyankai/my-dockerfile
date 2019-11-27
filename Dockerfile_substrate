@@ -1,19 +1,16 @@
-# Phusion image based on Ubuntu
-FROM phusion/baseimage:0.10.2
+FROM phusion/baseimage:0.10.2 as builder
+LABEL maintainer="idea_wj@163.com"
+LABEL description="用于编译substrate的镜像环境."
 
-ENV TERM=xterm
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade && \
-    apt-get --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
-RUN apt-get install -y cmake pkg-config libssl-dev git clang && \
-	curl https://sh.rustup.rs -sSf | sh -s -- -y
-ENV PATH=/root/.cargo/bin:$PATH
+	apt-get dist-upgrade -y -o Dpkg::Options::="--force-confold" && \
+	apt-get install -y cmake pkg-config libssl-dev git clang
 
-RUN rustup toolchain install nightly && \
-    rustup default nightly && \
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y && \
+	export PATH="$PATH:$HOME/.cargo/bin" && \
+	rustup toolchain install nightly && \
 	rustup target add wasm32-unknown-unknown --toolchain nightly && \
-	cargo install --git https://github.com/alexcrichton/wasm-gc
-
-ENV DEBIAN_FRONTEND=
+	rustup default nightly && \
+	rustup default stable && \
