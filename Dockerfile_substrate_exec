@@ -1,6 +1,6 @@
 FROM debian:stretch-slim
 LABEL maintainer="idea_wj@163.com"
-LABEL description="启动执行substrate"
+LABEL description="最小化执行环境，启动执行substrate"
 
 # 显示回溯
 ENV RUST_BACKTRACE 1
