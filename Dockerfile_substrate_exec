@@ -2,6 +2,9 @@ FROM debian:stretch-slim
 LABEL maintainer="idea_wj@163.com"
 LABEL description="启动执行substrate"
 
+# 显示回溯
+ENV RUST_BACKTRACE 1
+
 # 安装工具和依赖
 RUN apt-get update && \
 	DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
@@ -9,13 +12,14 @@ RUN apt-get update && \
 		libssl1.1 \
 		ca-certificates \
 		curl && \
-# apt cleanup
+# 清除缓存
 	apt-get autoremove -y && \
 	apt-get clean && \
 	find /var/lib/apt/lists/ -type f -not -name lock -delete; \
-# 添加账户
+# 添加用户
 	useradd -m -u 1000 -U -s /bin/sh -d /substrate substrate
 
 USER substrate
+
 EXPOSE 30333 9933 9944
 VOLUME ["/substrate"]
