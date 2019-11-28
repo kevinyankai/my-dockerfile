@@ -1,3 +1,4 @@
+# 参考官方脚本：https://getsubstrate.io/
 FROM phusion/baseimage:0.10.2 as builder
 LABEL maintainer="idea_wj@163.com"
 LABEL description="用于编译substrate的镜像环境."
@@ -7,10 +8,10 @@ ENV PATH=/root/.cargo/bin:$PATH
 
 RUN apt-get update && \
 	apt-get dist-upgrade -y -o Dpkg::Options::="--force-confold" && \
-	apt-get install -y cmake pkg-config libssl-dev git clang
+	apt-get install -y cmake pkg-config libssl-dev git gcc build-essential clang libclang-dev
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y && \
-	rustup toolchain install nightly && \
+	# rustup toolchain install nightly && \
+	rustup rustup update nightly && \
 	rustup target add wasm32-unknown-unknown --toolchain nightly && \
-	rustup default nightly && \
 	rustup default stable
