@@ -12,7 +12,7 @@ RUN apt-get update && \
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y && \
 	# rustup toolchain install nightly && \
-	rustup rustup update nightly && \
+	rustup update nightly && \
 	rustup target add wasm32-unknown-unknown --toolchain nightly && \
 	rustup default stable && \
 	f=`mktemp -d` && \
