@@ -15,7 +15,6 @@ RUN apt-get update && \
 # 清除缓存
 	apt-get autoremove -y && \
 	apt-get clean && \
-	find /var/lib/apt/lists/ -type f -not -name lock -delete; \
+	find /var/lib/apt/lists/ -type f -not -name lock -delete
 
 EXPOSE 30333 9933 9944
-VOLUME ["/substrate"]
