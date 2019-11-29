@@ -16,10 +16,6 @@ RUN apt-get update && \
 	apt-get autoremove -y && \
 	apt-get clean && \
 	find /var/lib/apt/lists/ -type f -not -name lock -delete; \
-# 添加用户
-	useradd -m -u 1000 -U -s /bin/sh -d /substrate substrate
-
-USER substrate
 
 EXPOSE 30333 9933 9944
 VOLUME ["/substrate"]
