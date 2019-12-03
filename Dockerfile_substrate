@@ -11,13 +11,14 @@ RUN apt-get update && \
 	apt-get dist-upgrade -y -o Dpkg::Options::="--force-confold" && \
 	apt-get install -y cmake pkg-config libssl-dev git gcc build-essential clang libclang-dev
 
+# 为substrate-up脚本自主可控，现删除对其的集成
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y && \
 	# rustup toolchain install nightly && \
 	rustup update nightly && \
 	rustup target add wasm32-unknown-unknown --toolchain nightly && \
-	rustup default stable && \
-	f=`mktemp -d` && \
-	git clone https://github.com/paritytech/substrate-up $f && \
-	cp -a $f/substrate-* ~/.cargo/bin && \
-	cp -a $f/polkadot-* ~/.cargo/bin && \
-	rm -rf /tmp/*e
+	rustup default stable
+	# f=`mktemp -d` && \
+	#git clone https://github.com/paritytech/substrate-up $f && \
+	# cp -a $f/substrate-* ~/.cargo/bin && \
+	# cp -a $f/polkadot-* ~/.cargo/bin && \
+	# rm -rf /tmp/*e
