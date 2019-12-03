@@ -18,7 +18,7 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y && \
 	rustup target add wasm32-unknown-unknown --toolchain nightly && \
 	rustup default stable
 	# f=`mktemp -d` && \
-	#git clone https://github.com/paritytech/substrate-up $f && \
+	# git clone https://github.com/paritytech/substrate-up $f && \
 	# cp -a $f/substrate-* ~/.cargo/bin && \
 	# cp -a $f/polkadot-* ~/.cargo/bin && \
 	# rm -rf /tmp/*e
