@@ -16,7 +16,8 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y && \
 	# rustup toolchain install nightly && \
 	rustup update nightly && \
 	rustup target add wasm32-unknown-unknown --toolchain nightly && \
-	rustup default stable
+	rustup default stable && \
+	cargo install --git https://github.com/paritytech/cargo-contract cargo-contract --force
 	# f=`mktemp -d` && \
 	# git clone https://github.com/paritytech/substrate-up $f && \
 	# cp -a $f/substrate-* ~/.cargo/bin && \
