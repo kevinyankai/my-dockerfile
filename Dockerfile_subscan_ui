@@ -19,7 +19,7 @@ FROM ubuntu:18.04
 
 RUN apt-get update && apt-get -y install nginx
 
-COPY --from=builder /app/apps/packages/apps/build /var/www/html
+# COPY --from=builder /app/subscan_ui/packages/apps/build /var/www/html
 
 EXPOSE 80
 
