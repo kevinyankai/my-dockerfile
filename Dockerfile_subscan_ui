@@ -19,7 +19,7 @@ RUN NODE_ENV=production yarn build
 
 RUN apt-get update && apt-get -y install nginx
 
-# COPY --from=builder /app/subscan_ui/packages/apps/build /var/www/html
+COPY --from=builder /app/subscan_ui/web /var/www/html
 
 EXPOSE 80
 
