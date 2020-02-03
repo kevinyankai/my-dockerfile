@@ -15,7 +15,7 @@ RUN npm install yarn -g
 RUN yarn
 RUN NODE_ENV=production yarn build
 
-FROM ubuntu:18.04
+# FROM ubuntu:18.04
 
 RUN apt-get update && apt-get -y install nginx
 
