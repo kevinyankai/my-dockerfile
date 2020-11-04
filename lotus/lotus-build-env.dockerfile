@@ -1,4 +1,4 @@
-# build container stage
+# lotus编译环境
 FROM golang:1.15.2
 
 ENV RUSTFLAGS="-C target-cpu=native -g"
