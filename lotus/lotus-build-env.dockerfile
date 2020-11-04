@@ -8,7 +8,7 @@ ENV FFI_BUILD_FROM_SOURCE=1
 WORKDIR /go/src/github.com/filecoin-project/lotus
 
 RUN apt-get update -y && \
-	apt-get install curl git mesa-opencl-icd ocl-icd-opencl-dev libhwloc-dev gcc git bzr jq pkg-config clang -y
+	apt-get install curl git mesa-opencl-icd ocl-icd-opencl-dev libhwloc-dev gcc git bzr jq pkg-config curl build-essential clang -y
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rustup-init.sh && \
 	chmod +x rustup-init.sh && \
