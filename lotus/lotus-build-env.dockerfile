@@ -13,10 +13,8 @@ ENV GOPROXY https://goproxy.cn
 WORKDIR /go/src/github.com/filecoin-project/lotus/
 
 RUN apt-get update -y && \
-	apt-get install curl git mesa-opencl-icd ocl-icd-opencl-dev libhwloc-dev gcc git bzr jq pkg-config curl build-essential clang -y
+	apt-get install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential libhwloc-dev -y
 
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rustup-init.sh && \
-	chmod +x rustup-init.sh && \
-	./rustup-init.sh -y
+RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
 
 RUN /bin/bash -c "source /root/.cargo/env"
