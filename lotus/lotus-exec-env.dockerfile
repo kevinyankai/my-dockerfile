@@ -8,7 +8,7 @@ RUN chmod 777 /bin/entrypoint
 
 RUN apt update && \
     apt upgrade -y && \
-    apt install mesa-opencl-icd ocl-icd-opencl-dev libhwloc-dev -y
+    apt install mesa-opencl-icd ocl-icd-opencl-dev git libhwloc-dev -y
 
 WORKDIR /lotus/bin
 
