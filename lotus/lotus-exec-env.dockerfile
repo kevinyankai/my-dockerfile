@@ -10,6 +10,8 @@ RUN apt update && \
     apt upgrade -y && \
     apt install mesa-opencl-icd ocl-icd-opencl-dev libhwloc-dev -y
 
+WORKDIR /lotus/bin
+
 # API 端口
 EXPOSE 1234/tcp
 
